@@ -41,9 +41,9 @@ public class Admin
                 add();
                 break;
 
-        // ------------------- Ubdate --------------------
+        // ------------------- Update --------------------
             case 2:
-               ubdate();
+               update();
                 break;
 
         // ------------------- remove --------------------
@@ -97,7 +97,7 @@ public class Admin
         System.out.println("\t\t\t\t\t\t|                             |");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
  
-        System.out.println("\t\t\t\t\t\t|       "+"\033[33m(2)\033[36m Ubdate"+"\033[35m            |");
+        System.out.println("\t\t\t\t\t\t|       "+"\033[33m(2)\033[36m Update"+"\033[35m            |");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
 
         System.out.println("\t\t\t\t\t\t|                             |");
@@ -244,12 +244,199 @@ public class Admin
         try{Thread.sleep(80);}catch(InterruptedException e) {};
     }
 
-    //-----------------------------------  Ubdate flight --------------------------------------
+    //-----------------------------------  Update flight --------------------------------------
 
-    public void ubdate()
+    public void update()
     {
+        System.out.print("\n\n\t\t\t\t\t\t Flight id ==> ");
+        String flight_id = reader.next();
+
+        int[] check = check_flight_id(flight_id);
+
+        int flag = check[0];
+        int index = check[1];
+
+
+        if(flag == 0)
+        {
+            System.out.print("\n\n\n\t\t\t\t\t\033[91m  <<< Rong Flight Id >>> ");
+            try {Thread.sleep(2000);} catch (InterruptedException e) {};
+            clear();
+            update();
+        }
+        else
+        {
+            update_frant1();
+
+            ubdate1(index);
+
+            clear();
+
+
+        }
 
     }
+
+    private void ubdate1(int index)
+    {
+        System.out.print("\t\t\t\t\t\t==> ");
+        int num1 = reader.nextInt();
+
+        switch (num1)
+        {
+            // --------------------- Flight ID ----------------
+            case 1:
+                System.out.print("\t\t\t\t\t\tflight_id ==> ");
+                String flight_id1 = reader.next();
+
+                flight_ary[index].set_flight_id(flight_id1);
+                ubdate1(index);
+                break;
+
+
+
+                // ------------------- Origins --------------------
+            case 2:
+
+                System.out.print("\t\t\t\t\t\torigin ==> ");
+                String origin = reader.next();
+
+                flight_ary[index].set_origin(origin);
+                ubdate1(index);
+                break;
+
+            // ------------------- Destention ----------------
+            case 3:
+                System.out.print("\t\t\t\t\t\tdestantion ==> ");
+                String destantion = reader.next();
+
+                flight_ary[index].set_destantion(destantion);
+                ubdate1(index);
+                break;
+
+            // --------------- Data ---------------
+            case 4:
+                System.out.print("\t\t\t\t\t\tdata ==> ");
+                String data = reader.next();
+
+                flight_ary[index].set_data(data);
+                ubdate1(index);
+                break;
+
+
+            // ------------------- time -----------------
+            case 5:
+                System.out.print("\t\t\t\t\t\ttime ==> ");
+                String time = reader.next();
+
+                flight_ary[index].set_time(time);
+                ubdate1(index);
+                break;
+
+
+            // ------------------- price -----------------
+            case 6:
+                System.out.print("\t\t\t\t\t\tprice ==> ");
+                int price = reader.nextInt();
+
+                flight_ary[index].set_price(price);
+                ubdate1(index);
+                break;
+
+
+            // ------------------- seat -----------------
+            case 7:
+                System.out.print("\t\t\t\t\t\tseat ==> ");
+                int seat = reader.nextInt();
+
+                flight_ary[index].set_seat(seat);
+                ubdate1(index);
+                break;
+
+            // ------------------- exit -----------------
+            case 8:
+                clear();
+                admin_back();
+                break;
+
+            default:
+
+                System.out.println("\t\t\t\t\t\t\t\t\t\t\033[91m ==> Rong choice <==\033[97m");
+                System.out.print("\t\t\t\t\t\t\t\t\t\t\t\033[33mPlese try again\033[97m");
+                admin_back();
+                break;
+
+
+        }
+    }
+
+
+    public void update_frant1()
+    {
+        System.out.println("\n\n");
+        try{Thread.sleep(500);}catch(InterruptedException e) {};
+        System.out.println("\033[35m\t\t\t\t\t\t+-----------------------------+");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t\t\t\t|         " + "\033[36m˙˚ Admin ˚˙" +"\033[35m         |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t+-----------------------------+");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|                             |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|       " + "\033[33m(1)\033[36m Flight ID"+"\033[35m         |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|                             |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|       "+"\033[33m(2)\033[36m Origins"+"\033[35m           |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|                             |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|       "+"\033[33m(3)\033[36m Destention"+"\033[35m        |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|                             |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|       "+"\033[33m(4)\033[36m Data"+"\033[35m              |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|                             |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|       "+"\033[33m(5)\033[36m Time "+"\033[35m             |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|                             |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|       "+"\033[33m(6)\033[36m Price "+"\033[35m            |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|                             |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|       "+"\033[33m(7)\033[36m seat "+"\033[35m             |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|                             |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|       "+"\033[33m(8)\033[36m exit "+"\033[35m             |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+
+        System.out.println("\t\t\t\t\t\t+-----------------------------+");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+    }
+
+
 
     //-----------------------------------  Remove flight --------------------------------------
 
@@ -322,6 +509,25 @@ public class Admin
         }
 
         return index;
+    }
+
+    //-----------------------------------  check flight Id --------------------------------------
+
+    public int[] check_flight_id(String id)
+    {
+        int[] flag = {0,0};
+
+        for (int i = 0; i <flight_ary.length; i++)
+        {
+            if(flight_ary[i].get_flight_id() != null && flight_ary[i].get_flight_id().equals(id))
+            {
+                flag[0] = 1;
+                flag[1] = i;
+                break;
+            }
+        }
+
+        return flag;
     }
 
 
