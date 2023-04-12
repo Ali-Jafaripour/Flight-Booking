@@ -10,17 +10,18 @@ public class Booking {
 
     Passenger[] user = new Passenger[20];
 
-//-------- welcom massage --------
+    int newuser_flag = 0;
 
-public void welcom()
-{
-    new_user();
-    welcom_massage();
-    menu_back();
-}
+//-------- welcome massage --------
+
+    public void welcome()
+    {
+        welcome_massage();
+        menu_back();
+    }
 
 //----------- new users -------- 
-    public void new_user()
+    void new_user()
     {
         for (int j = 0; j < user.length; j++) 
         {
@@ -34,6 +35,12 @@ public void welcom()
 
     public void menu_back()
     {
+
+        if(newuser_flag == 0)
+        {
+            new_user();
+            newuser_flag++;
+        }
 
         menu_front();
 
@@ -168,101 +175,101 @@ public void welcom()
 
 //------------------------------------------  sign in -----------------------------------------
 
-public void sign_in()
-{
-    print_usernames();      // For Test
-
-    int flag_name = 0;
-    int flag_pass = 0;
-     
-    sign_frant();
-
-    // -------------- username -----------------
-    System.out.print("\t\t\t\t\t\tName ==> ");
-    String username = reader.next();
-    if(username.equals("1"))
+    public void sign_in()
     {
+        print_usernames();      // For Test
+
+        int flag_name = 0;
+        int flag_pass = 0;
+
+        sign_frant();
+
+        // -------------- username -----------------
+        System.out.print("\t\t\t\t\t\tName ==> ");
+        String username = reader.next();
+        if(username.equals("1"))
+        {
+            clear();
+            menu_back();
+        }
+
+        flag_name = check_username(username);
+
+        if(flag_name == 0 && !username.equals("admin"))
+        {
+            System.out.print("\n\n\n\t\t\t\t\033[91m  <<< Rong Username >>> ");
+            try {Thread.sleep(2000);} catch (InterruptedException e) {};
+            clear();
+            sign_in();
+        }
+
+
+        // -------------- password -----------------
+        System.out.print("\t\t\t\t\t\tPassword ==> ");
+        String password = reader.next();
+        if(password.equals("1"))
+        {
+            clear();
+            menu_back();
+        }
+
+        flag_pass = check_password(password);
+
+        if(flag_pass == 0 && !password.equals("admin"))
+        {
+            System.out.print("\n\n\n\t\t\t\t\033[91m  <<< Rong Password >>> ");
+            try {Thread.sleep(2000);} catch (InterruptedException e) {};
+            clear();
+            sign_in();
+        }
+
         clear();
-        menu_back();
+
+
+
+
+        if(username.equals("admin") && password.equals("admin") )
+        {
+            Admin admin = new Admin();
+
+            admin.admin_menu();
+
+        }
+
+        if(flag_name == 0  && flag_pass==0)
+        {
+
+                // passenger menu
+
+        }
     }
 
-    flag_name = check_username(username);
-
-    if(flag_name == 0 && !username.equals("admin"))
-    {
-        System.out.print("\n\n\n\t\t\t\t\033[91m  <<< Rong Username >>> ");
-        try {Thread.sleep(2000);} catch (InterruptedException e) {};
-        clear();
-        sign_in();
-    }
-
-
-    // -------------- password -----------------
-    System.out.print("\t\t\t\t\t\tPassword ==> ");
-    String password = reader.next();
-    if(password.equals("1"))
-    {
-        clear();
-        menu_back();
-    }
-    
-    flag_pass = check_password(password);
-
-    if(flag_pass == 0 && !password.equals("admin"))
-    {
-        System.out.print("\n\n\n\t\t\t\t\033[91m  <<< Rong Password >>> ");
-        try {Thread.sleep(2000);} catch (InterruptedException e) {};
-        clear();
-        sign_in();
-    }
-
-    clear();
-
-
-
-
-    if(username.equals("admin") && password.equals("admin") )
-    {
-        Admin admin = new Admin();
-
-        admin.admin_menu();
-
-    }
-   
-    if(flag_name == 0  && flag_pass==0)
+    public void sign_frant()
     {
 
-            // passenger menu
+        System.out.println("\n\n");
+        try{Thread.sleep(500);}catch(InterruptedException e) {};
+        System.out.println("\033[35m\t\t\t\t\t\t+----------------------------------------+");
 
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t\t\t\t|   \033[36m˙˚ Write your name and password ˚˙" +"\033[35m   |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|                                        |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|             ˙˚ 1.exit ˚˙               |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\033[35m\t\t\t\t\t\t+----------------------------------------+");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
     }
-}
-
-public void sign_frant()
-{
-    
-    System.out.println("\n\n");
-    try{Thread.sleep(500);}catch(InterruptedException e) {};
-    System.out.println("\033[35m\t\t\t\t\t\t+----------------------------------------+");
-    
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
-    System.out.println("\t\t\t\t\t\t|   \033[36m˙˚ Write your name and password ˚˙" +"\033[35m   |");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-    System.out.println("\t\t\t\t\t\t|                                        |");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-    System.out.println("\t\t\t\t\t\t|             ˙˚ 1.exit ˚˙               |");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-    System.out.println("\033[35m\t\t\t\t\t\t+----------------------------------------+");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
-}
 
 
 
 //-------------------------------------- Check username -------------------------------------
 
-public  int  check_username(String username)
+    public  int  check_username(String username)
     {
         int flag =0;
 
@@ -280,7 +287,7 @@ public  int  check_username(String username)
 
 //-------------------------------------- Check username -------------------------------------
 
-public  int  check_password(String password)
+    public  int  check_password(String password)
     {
         int flag =0;
 
@@ -302,90 +309,90 @@ public  int  check_password(String password)
 
 //-------------------------------------- complate users -------------------------------------
 
-public int complate_user()
-{
-    int count = 0;
+    public int complate_user()
+    {
+        int count = 0;
 
-        for (int i = 0; i < user.length; i++) 
-        {
-            if(user[i].getusername() == null)
+            for (int i = 0; i < user.length; i++)
             {
-                count = i;
-                break;
+                if(user[i].getusername() == null)
+                {
+                    count = i;
+                    break;
+                }
+
             }
 
-        }
-
-    return count;
-}
+        return count;
+    }
 
 
-//------------------------------------------ welcom massage -------------------------------------
+//------------------------------------------ welcome massage -------------------------------------
 
- public void welcom_massage()
- {
-    clear();
-    System.out.println("\n\n\n\n\n\n\n\n\n\n");
+     public void welcome_massage()
+     {
+        clear();
+        System.out.println("\n\n\n\n\n\n\n\n\n\n");
 
-    System.out.println("\033[36m\t\t\t     ___                ____________ __                             ");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\033[36m\t\t\t     ___                ____________ __                             ");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
-    System.out.println("\t\t\t     \\  \\     ____     /  /  _______|  |     ______  ___   ___   _____ _______");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t     \\  \\     ____     /  /  _______|  |     ______  ___   ___   _____ _______");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
-    System.out.println("\t\t\t      \\  \\   /    \\   /  /|  ____   |  |    /  ____/  _  \\|    \\/    |   _____|");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t      \\  \\   /    \\   /  /|  ____   |  |    /  ____/  _  \\|    \\/    |   _____|");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
-    System.out.println("\t\t\t       \\  \\ /  /\\  \\ /  / |   __|   |  |   |  |   |  | |  |  |\\  /|  |    __|");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t       \\  \\ /  /\\  \\ /  / |   __|   |  |   |  |   |  | |  |  |\\  /|  |    __|");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
-    System.out.println("\t\t\t        \\  V  /  \\  V  /  |  |______|  |___|  |___|  |_|  |  | \\/ |  |   |____");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t        \\  V  /  \\  V  /  |  |______|  |___|  |___|  |_|  |  | \\/ |  |   |____");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
-    System.out.println("\t\t\t         \\___/    \\___/   |_________|_______\\______\\_____/|__|    |__|________|");
+        System.out.println("\t\t\t         \\___/    \\___/   |_________|_______\\______\\_____/|__|    |__|________|");
 
-    
-    System.out.println("\n\n\n\n\n\033[93m");
 
-    System.out.println("\t\t\t ______             _    _              ______           _     _____ _      _        _       ");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\n\n\n\n\n\033[93m");
 
-    System.out.println("\t\t\t | ___ \\           | |  (_)             | ___ \\         | |   |_   _(_)    | |      | |      ");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t ______             _    _              ______           _     _____ _      _        _       ");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
-    System.out.println("\t\t\t | |_/ / ___   ___ | | ___ _ __   __ _  | |_/ / ___  ___| |_    | |  _  ___| | _____| |_ ___ ");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t | ___ \\           | |  (_)             | ___ \\         | |   |_   _(_)    | |      | |      ");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
-    System.out.println("\t\t\t | ___ \\/ _ \\ / _ \\| |/ / | '_ \\ / _` | | ___ \\/ _ \\/ __| __|   | | | |/ __| |/ / _ \\ __/ __|");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t | |_/ / ___   ___ | | ___ _ __   __ _  | |_/ / ___  ___| |_    | |  _  ___| | _____| |_ ___ ");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
-    System.out.println("\t\t\t | |_/ / (_) | (_) |   <| | | | | (_| | | |_/ /  __/\\__ \\ |_    | | | | (__|   <  __/ |_\\__ \\");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t | ___ \\/ _ \\ / _ \\| |/ / | '_ \\ / _` | | ___ \\/ _ \\/ __| __|   | | | |/ __| |/ / _ \\ __/ __|");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
-    System.out.println("\t\t\t \\____/ \\___/ \\___/|_|\\_\\_|_| |_|\\__, | \\____/ \\___||___/\\__|   \\_/ |_|\\___|_|\\_\\___|\\__|___/");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t | |_/ / (_) | (_) |   <| | | | | (_| | | |_/ /  __/\\__ \\ |_    | | | | (__|   <  __/ |_\\__ \\");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
-    System.out.println("\t\t\t                                  __/ |                                                      ");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t \\____/ \\___/ \\___/|_|\\_\\_|_| |_|\\__, | \\____/ \\___||___/\\__|   \\_/ |_|\\___|_|\\_\\___|\\__|___/");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
-    System.out.println("\t\t\t                                 |___/                                                       ");
-    try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t                                  __/ |                                                      ");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t                                 |___/                                                       ");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
 
 
 
 
-    try{Thread.sleep(1500);}catch(InterruptedException e) {};
+        try{Thread.sleep(1500);}catch(InterruptedException e) {};
 
-    clear();
- }
+        clear();
+     }
 
 //------------------------------------------ system clear -----------------------------------------
 
     public  void clear()
     {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
     }
 
 
@@ -394,14 +401,19 @@ public int complate_user()
 
 
 
-public void print_usernames()
-{
-    for (int i = 0; i < user.length; i++) 
+    public void print_usernames()
     {
-        System.out.println( "username ("+i+") "+user[i].getusername()+"\tpass => "+user[i].getpassword());
+        for (int i = 0; i < user.length; i++)
+        {
+            System.out.println( "username ("+i+") "+user[i].getusername()+"\tpass => "+user[i].getpassword());
+        }
+        System.out.println("\n\n\n\n");
     }
-    System.out.println("\n\n\n\n");
-}
+
+
+
+
+
 
 
 
