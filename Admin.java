@@ -279,19 +279,20 @@ public class Admin
     
             for (int i = 0; i < flight_ary.length; i++) 
             {
-    
+
+                if(flight_ary[i].get_flight_id()!= null)
+                {
                     System.out.print("\033[35m\t\t\t\t\t");
                     System.out.print("+---------------------------------------------------------------------------------------------+");
                     try{Thread.sleep(80);}catch(InterruptedException e) {};
-    
-    
+
+
                     System.out.print("\n\t\t\t\t\t");
                     System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ",flight_ary[i].get_flight_id(),flight_ary[i].get_origin(),flight_ary[i].get_destantion(),flight_ary[i].get_data(),flight_ary[i].get_time(),flight_ary[i].get_price(),flight_ary[i].get_seat());
                     System.out.println("|");
                     try{Thread.sleep(80);}catch(InterruptedException e) {};
-    
+                }
             }
-    
     
             System.out.print("\t\t\t\t\t");
             System.out.print("+---------------------------------------------------------------------------------------------+");
