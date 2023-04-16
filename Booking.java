@@ -1,46 +1,54 @@
+/*
+ *  Author   Ali jafaripour
+ *  Data     1402/01/09
+ */
+
 import java.util.Scanner;
-
-
-//  Author   Ali jafaripour
-//  Data     1402/01/09
 
 public class Booking {
 
     static Scanner reader = new Scanner(System.in);
 
     Passenger[] user = new Passenger[20];
+    Flight[] flight_ary = new Flight[20];
 
-    int newuser_flag = 0;
 
 //-------- welcome massage --------
 
     public void welcome()
     {
+        new_user();
+        new_flights();
+        diffalt_flight();
         welcome_massage();
-        menu_back();
+        menu_back(flight_ary,user);
     }
 
-//----------- new users -------- 
+    //----------- new users --------
     void new_user()
     {
-        for (int j = 0; j < user.length; j++) 
+        for (int j = 0; j < user.length; j++)
         {
             user[j] = new Passenger();
         }
-    }    
+    }
 
+    //----------- new  flights --------
+    void new_flights()
+    {
+        for (int j = 0; j < flight_ary.length; j++)
+        {
+            flight_ary[j] = new Flight();
+        }
+
+    }
 
 
 // ------------------------------------------ first menu -----------------------------------------
 
-    public void menu_back()
+    public void menu_back(Flight[] flight_ary,Passenger[] user)
     {
-
-        if(newuser_flag == 0)
-        {
-            new_user();
-            newuser_flag++;
-        }
+        print_usernames(user);
 
         menu_front();
 
@@ -52,25 +60,25 @@ public class Booking {
         {
             // ------------------- Sign in -------------------
             case 1:
-                sign_in();
+                sign_in(flight_ary,user);
                 break;
 
             // ------------------- Sign up --------------------
             case 2:
-                add_back();
+                add_back(flight_ary,user);
                 break;
 
             default:
 
                 System.out.println("\t\t\t\t\t\t\t\t\t\t\033[91m ==> Rong choice <==\033[97m");
                 System.out.print("\t\t\t\t\t\t\t\t\t\t\t\033[33mPlese try again\033[97m");
-                menu_back();
+                menu_back(flight_ary,user);
                 break;
         }
 
     }
 
-    public void menu_front()
+    private void menu_front()
     {
         System.out.println("\n\n\n\n\n\n\n");
         try{Thread.sleep(500);}catch(InterruptedException e) {};
@@ -90,7 +98,7 @@ public class Booking {
 
         System.out.println("\t\t\t\t\t\t|                             |");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
- 
+
         System.out.println("\t\t\t\t\t\t|         "+"\033[33m(2)\033[36m Sign up"+"\033[35m         |");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
 
@@ -107,34 +115,38 @@ public class Booking {
 
 //------------------------------------------  sign up -----------------------------------------
 
-    public void add_back()
+
+    /**
+     * These methods for create account
+     */
+    private void add_back(Flight[] flight_ary,Passenger[] user)
     {
-        print_usernames();      // For Test
+        print_usernames(user);      // For Test
 
         add_front();
         int flag = 0;
 
-    // ----------------- username -------------------
+        // ----------------- username -------------------
         System.out.print("\t\t\t\t\t\tName ==> ");
         String username = reader.next();
-        flag = check_username(username);
+        flag = check_username(user,username);
         if(flag ==1)
         {
             System.out.print("\n\t\t\t\t\t\t\t\033[91m  <<< This username used >>> ");
             try {Thread.sleep(2000);} catch (InterruptedException e) {};
             clear();
-            add_back();
+            add_back(flight_ary,user);
         }
-    // ----------------- password --------------------
+        // ----------------- password --------------------
         System.out.print("\t\t\t\t\t\tPassword ==> ");
         String password = reader.next();
 
         clear();
 
-        int count = complate_user();
+        int count = complate_user(user);
 
 
-       
+
         if(flag == 0)
         {
             user[count].setusername(username);
@@ -143,18 +155,18 @@ public class Booking {
             System.out.print("\n\t\t\t\t\033[32m  <<< change Saved >>> ");
             try {Thread.sleep(1500);} catch (InterruptedException e) {};
             clear();
-            menu_back();
+            menu_back(flight_ary,user);
 
         }
 
     }
 
-    public  void add_front()
+    private  void add_front()
     {
         System.out.println("\n\n\n\n\n\n\n");
         try{Thread.sleep(500);}catch(InterruptedException e) {};
         System.out.println("\033[35m\t\t\t\t\t\t+----------------------------------------+");
-        
+
         try{Thread.sleep(80);}catch(InterruptedException e) {};
         System.out.println("\t\t\t\t\t\t|   \033[36m ˙˚ Write your name & password ˚˙ " +"\033[35m   |");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
@@ -167,17 +179,19 @@ public class Booking {
 
         System.out.println("\033[35m\t\t\t\t\t\t+----------------------------------------+");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-        // System.out.println("\t\t\t\t\t\tName ==> ");
-        // System.out.print("\t\t\t\t\t\tPassword ==> ");
+
 
     }
 
 
-//------------------------------------------  sign in -----------------------------------------
+    //------------------------------------------  sign in -----------------------------------------
+    /**
+     * These methods for sing in
+     */
 
-    public void sign_in()
+    private void sign_in(Flight[] flight_ary,Passenger[] user)
     {
-        print_usernames();      // For Test
+        print_usernames(user);      // For Test
 
         int flag_name = 0;
         int flag_pass = 0;
@@ -190,17 +204,17 @@ public class Booking {
         if(username.equals("1"))
         {
             clear();
-            menu_back();
+            menu_back(flight_ary,user);
         }
 
-        flag_name = check_username(username);
+        flag_name = check_username(user,username);
 
-        if(flag_name == 0 && !username.equals("admin"))
+        if(flag_name == 0 && !username.toLowerCase().equals("admin"))
         {
             System.out.print("\n\n\n\t\t\t\t\033[91m  <<< Rong Username >>> ");
             try {Thread.sleep(2000);} catch (InterruptedException e) {};
             clear();
-            sign_in();
+            sign_in(flight_ary,user);
         }
 
 
@@ -210,17 +224,17 @@ public class Booking {
         if(password.equals("1"))
         {
             clear();
-            menu_back();
+            menu_back(flight_ary,user);
         }
 
-        flag_pass = check_password(password);
+        flag_pass = check_password(user,password);
 
-        if(flag_pass == 0 && !password.equals("admin"))
+        if(flag_pass == 0 && !password.toLowerCase().equals("admin"))
         {
             System.out.print("\n\n\n\t\t\t\t\033[91m  <<< Rong Password >>> ");
             try {Thread.sleep(2000);} catch (InterruptedException e) {};
             clear();
-            sign_in();
+            sign_in(flight_ary,user);
         }
 
         clear();
@@ -228,23 +242,23 @@ public class Booking {
 
 
 
-        if(username.equals("admin") && password.equals("admin") )
+        if(username.toLowerCase().equals("admin") && password.toLowerCase().equals("admin") )
         {
             Admin admin = new Admin();
 
-            admin.admin_menu();
+            admin.admin_back(flight_ary,user);
 
         }
 
         if(flag_name == 0  && flag_pass==0)
         {
 
-                // passenger menu
+            // passenger menu
 
         }
     }
 
-    public void sign_frant()
+    private void sign_frant()
     {
 
         System.out.println("\n\n");
@@ -267,37 +281,43 @@ public class Booking {
 
 
 
-//-------------------------------------- Check username -------------------------------------
+    //-------------------------------------- Check username -------------------------------------
+    /**
+     * This method check username in aray of user
+     */
 
-    public  int  check_username(String username)
+    private  int  check_username(Passenger[] user,String username)
     {
         int flag =0;
 
-        for (int i = 0; i < user.length; i++) 
+        for (int i = 0; i < user.length; i++)
         {
-            if(user[i].getusername() != null && user[i].getusername().equals(username) ||  username.equals("admin"))
+            if(user[i].getusername() != null && user[i].getusername().equals(username) ||  username.toLowerCase().equals("admin"))
             {
                 flag = 1;
             }
-            
+
         }
 
         return flag;
     }
 
-//-------------------------------------- Check username -------------------------------------
+    //-------------------------------------- Check username -------------------------------------
+    /**
+     * This method check password in aray of user
+     */
 
-    public  int  check_password(String password)
+    private  int  check_password(Passenger[] user,String password)
     {
         int flag =0;
 
-        for (int i = 0; i < user.length; i++) 
+        for (int i = 0; i < user.length; i++)
         {
             if(user[i].getpassword() != null && user[i].getpassword().equals(password))
             {
                 flag = 1;
             }
-            
+
         }
 
         return flag;
@@ -307,30 +327,33 @@ public class Booking {
 
 
 
-//-------------------------------------- complate users -------------------------------------
+    //-------------------------------------- complete users -------------------------------------
+    /**
+     * This method find user of array Its null & return index of
+     */
 
-    public int complate_user()
+    private int complate_user(Passenger[] user)
     {
-        int count = 0;
+        int index = 0;
 
-            for (int i = 0; i < user.length; i++)
+        for (int i = 0; i < user.length; i++)
+        {
+            if(user[i].getusername() == null)
             {
-                if(user[i].getusername() == null)
-                {
-                    count = i;
-                    break;
-                }
-
+                index = i;
+                break;
             }
 
-        return count;
+        }
+
+        return index;
     }
 
 
 //------------------------------------------ welcome massage -------------------------------------
 
-     public void welcome_massage()
-     {
+    private void welcome_massage()
+    {
         clear();
         System.out.println("\n\n\n\n\n\n\n\n\n\n");
 
@@ -385,23 +408,53 @@ public class Booking {
         try{Thread.sleep(1500);}catch(InterruptedException e) {};
 
         clear();
-     }
+    }
 
 //------------------------------------------ system clear -----------------------------------------
 
-    public  void clear()
+    public void clear()
     {
-    System.out.print("\033[H\033[2J");
-    System.out.flush();
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+
+    //-----------------------------------  Set diffalt flight --------------------------------------
+    /*
+     * this method set tree flight id
+     */
+    private void diffalt_flight()
+    {
+        flight_ary[0].set_flight_id("WX-12");
+        flight_ary[0].set_origin("Yazd");
+        flight_ary[0].set_destantion("Tehran");
+        flight_ary[0].set_data("1401-12-10");
+        flight_ary[0].set_time(null);
+        flight_ary[0].set_price(700000);
+        flight_ary[0].set_seat(51);
+
+        flight_ary[1].set_flight_id("WX-13");
+        flight_ary[1].set_origin("Yazd");
+        flight_ary[1].set_destantion("Shiraz");
+        flight_ary[1].set_data("1401-12-8");
+        flight_ary[1].set_time("8:30");
+        flight_ary[1].set_price(400000);
+        flight_ary[1].set_seat(72);
+
+        flight_ary[2].set_flight_id("WX-14");
+        flight_ary[2].set_origin("Yazd");
+        flight_ary[2].set_destantion("Mashhad");
+        flight_ary[2].set_data("1401-12-20");
+        flight_ary[2].set_time("17:45");
+        flight_ary[2].set_price(800000);
+        flight_ary[2].set_seat(60);
     }
 
 
 
 
 
-
-
-    public void print_usernames()
+    public void print_usernames(Passenger[] user)
     {
         for (int i = 0; i < user.length; i++)
         {
@@ -409,11 +462,6 @@ public class Booking {
         }
         System.out.println("\n\n\n\n");
     }
-
-
-
-
-
 
 
 

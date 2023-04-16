@@ -1,11 +1,5 @@
 public class Flight
 {
-    // Flight ID
-    // Origins 
-    // Destention
-    // Data
-    // Time 
-    // Price 
 
 
     private String flight_id;
