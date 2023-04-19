@@ -241,7 +241,7 @@ public class Admin
 
         if(flag == 0)
         {
-            System.out.print("\n\n\n\t\t\t\t\t\033[91m  <<< Rong Flight Id >>> ");
+            System.out.print("\n\n\n\t\t\t\t\t\033[91m  <<< Wrong Flight Id >>> ");
             try {Thread.sleep(2000);} catch (InterruptedException e) {};
             clear();
             update(flight_ary,user);
@@ -343,7 +343,7 @@ public class Admin
 
             default:
 
-                System.out.println("\t\t\t\t\t\t\t\t\t\t\033[91m ==> Rong choice <==\033[97m");
+                System.out.println("\t\t\t\t\t\t\t\t\t\t\033[91m ==> wrong choice <==\033[97m");
                 System.out.print("\t\t\t\t\t\t\t\t\t\t\t\033[33mPlese try again\033[97m");
                 ubdate1(flight_ary,user,index);
                 break;
@@ -447,7 +447,7 @@ public class Admin
 
         if(flag == 0)
         {
-            System.out.print("\n\n\n\t\t\t\t\t\033[91m  <<< Rong Flight Id >>> ");
+            System.out.print("\n\n\n\t\t\t\t\t\033[91m  <<< Wrong Flight Id >>> ");
             try {Thread.sleep(2000);} catch (InterruptedException e) {};
             clear();
             remove(flight_ary,user);
@@ -581,6 +581,7 @@ public class Admin
      * @param flight_ary  array of flight from Flight class
      *  @param id  flight id
      */
+
     private int[] check_flight_id(Flight[] flight_ary,String id)
     {
         int[] flag = {0,0};
@@ -606,7 +607,6 @@ public class Admin
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
-
 
 
 
