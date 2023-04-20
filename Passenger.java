@@ -14,7 +14,10 @@ public class Passenger
     private String password;
 
     private int  wallet = 0;
-    private List<Integer> ticket_id = new ArrayList<>();
+
+    Ticket[] ticket = new Ticket[30];
+
+    static  int count;
 
     Scanner reader = new Scanner(System.in);
 
@@ -638,11 +641,35 @@ public class Passenger
     {
         System.out.print("\t\t\t\t\t\tTicket id ==> ");
         int ticket_id= reader.nextInt();
-        if (user[index_user].ticket_id.contains(ticket_id) == true)
+
+        for (int i = 0; i < ticket.length; i++)
         {
-            System.out.println("its true");
+//            if ( user[index_user].ticket[i] != null) {
+//                System.out.printf("ticket info :\t%10d\t%2d", user[index_user].ticket[i].getTicketId(), user[index_user].ticket[i].getFlight_index());
+//            }
+            if ( user[index_user].ticket[i] != null && user[index_user].ticket[i].getTicketId() == ticket_id)
+            {
+               int index_flidht = user[index_user].ticket[i].getFlight_index();
+               int update_seat = ( flight_ary[index_flidht].get_seat() + 1 );
+
+                flight_ary[index_flidht].set_seat(update_seat); // Update seat of flight
+
+                user[index_user].setwallet(user[index_user].getwallet() + flight_ary[index_flidht].get_price()); // Update money of wallet
+
+                clear();
+                System.out.print("\n\t\t\t\t\033[32m  <<< change Saved >>> ");
+                try {Thread.sleep(1000);} catch (InterruptedException e) {};
+                clear();
+                passenger_menu_back(flight_ary,user);
+            }
         }
-        System.out.println("its false");
+
+        clear();
+        System.out.print("\n\n\n\t\t\t\t\033[91m  <<< Wrong Ticket id >>> ");
+        try {Thread.sleep(1500);} catch (InterruptedException e) {};
+        clear();
+
+        passenger_menu_back(flight_ary,user);
     }
 
 //------------------------------------------------- Booked Ticket -------------------------------------------------
@@ -699,12 +726,14 @@ public class Passenger
             flight_ary[index].set_seat(seat-1);
         }
 
-        Ticket ticket = new Ticket();
-        user[index_user].ticket_id.add(ticket.getTicketId()); // add ticket id to list of
+        //Ticket ticket = new Ticket();
+        user[index_user].ticket[count] = new Ticket();
+        user[index_user].ticket[count].setFlight_index(index);
+
         while (true)
         {
-            System.out.printf("\n\n\n\t\t\t\t\t\033[32m  <<< Your ticket id : ˙˚\033[33m%10d\033[32m˚˙ >>> \n",ticket.getTicketId());
-
+            System.out.printf("\n\n\n\t\t\t\t\t\033[32m  <<< Your ticket id : ˙˚\033[33m%10d \033[32m˚˙ >>> \n", user[index_user].ticket[count].getTicketId());
+            count++;
             String go_back = reader.next();
             clear();
             passenger_menu_back(flight_ary, user);
@@ -802,7 +831,7 @@ public class Passenger
         System.out.print("\t\t\t\t\t");
         System.out.print("+---------------------------------------------------------------------------------------------+");
 
-        System.out.println("\t\t\t\t\t Press something to go back");
+        System.out.println("\n\t\t\t\t\t Press something to go back");
         while(true)
         {
             String go_back = reader.next();
