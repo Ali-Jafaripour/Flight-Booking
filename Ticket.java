@@ -7,7 +7,6 @@ import java.util.Random;
 
 public class Ticket
 {
-
         private int ticketId;
 
         //--------------- constructor ------------------

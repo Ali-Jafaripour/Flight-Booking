@@ -11,6 +11,5 @@ public class Main
         Booking start = new Booking();
 
         start.welcome();
-
     }
 }

@@ -121,7 +121,7 @@ public class Booking {
      */
     private void add_back(Flight[] flight_ary,Passenger[] user)
     {
-        print_usernames(user);      // For Test
+        //print_usernames(user);      // For Test
 
         add_front();
 
@@ -192,7 +192,7 @@ public class Booking {
 
     private void sign_in(Flight[] flight_ary,Passenger[] user)
     {
-        print_usernames(user);      // For Test
+       // print_usernames(user);      // For Test
 
 
 

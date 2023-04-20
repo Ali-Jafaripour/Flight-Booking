@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -12,6 +14,7 @@ public class Passenger
     private String password;
 
     private int  wallet = 0;
+    private List<Integer> ticket_id = new ArrayList<>();
 
     Scanner reader = new Scanner(System.in);
 
@@ -242,7 +245,7 @@ public class Passenger
 
         clear();
         System.out.print("\n\t\t\t\t\033[32m  <<< change Saved >>> ");
-        try {Thread.sleep(1500);} catch (InterruptedException e) {};
+        try {Thread.sleep(1000);} catch (InterruptedException e) {};
         clear();
         passenger_menu_back(flight_ary,user);
 
@@ -256,7 +259,7 @@ public class Passenger
         System.out.println("\033[35m\t\t\t\t\t\t+----------------------------------------+");
 
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-        System.out.println("\t\t\t\t\t\t|      \033[36m˙˚ Write your password ˚˙" +"\033[35m    |");
+        System.out.println("\t\t\t\t\t\t|        \033[36m˙˚ Write your password ˚˙" +"\033[35m       |");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
 
         System.out.println("\t\t\t\t\t\t|                                        |");
@@ -633,9 +636,126 @@ public class Passenger
 
     private void ticket(Flight[] flight_ary, Passenger[] user)
     {
+        System.out.print("\t\t\t\t\t\tTicket id ==> ");
+        int ticket_id= reader.nextInt();
+        if (user[index_user].ticket_id.contains(ticket_id) == true)
+        {
+            System.out.println("its true");
+        }
+        System.out.println("its false");
+    }
+
+//------------------------------------------------- Booked Ticket -------------------------------------------------
+
+    private void booked(Flight[] flight_ary, Passenger[] user)
+    {
+        booked_frant();
+        // -------------- flight id -----------------
+
+        System.out.print("\t\t\t\t\t\tFlight id ==> ");
+        String flight_id = reader.next();
+
+        if(flight_id.equals("1"))
+        {
+            clear();
+            passenger_menu_back(flight_ary,user);
+        }
+
+        int[] check_flight = new int[2];
+        check_flight = check_flight_id(flight_ary,flight_id.toUpperCase());
+        int flag = check_flight[0];
+        int index = check_flight[1];
+
+        if(flag == 0)
+        {
+            System.out.print("\n\n\n\t\t\t\t\033[91m  <<< Wrong Flight id >>> ");
+            try {Thread.sleep(2000);} catch (InterruptedException e) {};
+            clear();
+            booked(flight_ary, user);
+        }
+        clear();
+        if(flight_ary[index].get_seat()==0)
+        {
+            System.out.print("\n\n\n\t\t\t\t\t\033[91m  <<< Flight seat is full >>> ");
+            try {Thread.sleep(2500);} catch (InterruptedException e) {};
+            clear();
+            booked(flight_ary, user);
+        }
+
+        if(flight_ary[index].get_price() >= user[index_user].getwallet())
+        {
+            System.out.print("\n\n\n\t\t\t\t\t\033[91m  <<< There is not enough stock >>> ");
+            try {Thread.sleep(2500);} catch (InterruptedException e) {};
+            clear();
+            booked(flight_ary, user);
+        } else {
+            int seat = flight_ary[index].get_seat();
+            int price = flight_ary[index].get_price();
+            int stock = user[index_user].getwallet();
+
+            int new_stock = (stock - price);
+
+            user[index_user].setwallet(new_stock);
+            flight_ary[index].set_seat(seat-1);
+        }
+
+        Ticket ticket = new Ticket();
+        user[index_user].ticket_id.add(ticket.getTicketId()); // add ticket id to list of
+        while (true)
+        {
+            System.out.printf("\n\n\n\t\t\t\t\t\033[32m  <<< Your ticket id : ˙˚\033[33m%10d\033[32m˚˙ >>> \n",ticket.getTicketId());
+
+            String go_back = reader.next();
+            clear();
+            passenger_menu_back(flight_ary, user);
+
+            break;
+        }
 
     }
 
+    /**
+     * check flight array to find that flight id
+     * if there was flag will be 1 and index of;
+     * @return flag & index (1 = true),(0 = false)
+     */
+    private  int[]  check_flight_id(Flight[] flight_ary,String flight_id)
+    {
+        int[] flag_index = new int[2];
+
+        for (int i = 0; i < flight_ary.length; i++)
+        {
+
+            if(flight_ary[i].get_flight_id() != null && flight_ary[i].get_flight_id().equals(flight_id))
+            {
+                flag_index[0] = 1;
+                flag_index[1] = i;
+            }
+
+        }
+
+        return flag_index;
+    }
+
+    private void booked_frant()
+    {
+        System.out.println("\n\n");
+        try{Thread.sleep(500);}catch(InterruptedException e) {};
+        System.out.println("\033[35m\t\t\t\t\t\t+----------------------------------------+");
+
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t\t\t\t|  \033[36m˙˚ Write your cosidered flight id ˚˙" +"\033[35m  |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|                                        |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t|             ˙˚ 1.exit ˚˙               |");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\033[35m\t\t\t\t\t\t+----------------------------------------+");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+    }
 
 //------------------------------------------------- Flight Schedules -------------------------------------------------
     /**
@@ -696,12 +816,6 @@ public class Passenger
 
     }
 
-//------------------------------------------------- Booked Ticket -------------------------------------------------
-
-    private void booked(Flight[] flight_ary, Passenger[] user)
-    {
-
-    }
 
 //------------------------------------------------- Add Charge -------------------------------------------------
 
@@ -716,12 +830,11 @@ public class Passenger
             clear();
             passenger_menu_back(flight_ary, user);
         }
-
-        user[index_user].setwallet(charge);
+        user[index_user].setwallet(user[index_user].getwallet() + charge);
 
         clear();
         System.out.print("\n\t\t\t\t\033[32m  <<< change Saved >>> ");
-        try {Thread.sleep(1500);} catch (InterruptedException e) {};
+        try {Thread.sleep(1000);} catch (InterruptedException e) {};
         clear();
         passenger_menu_back(flight_ary,user);
 
