@@ -1,5 +1,8 @@
 import java.util.Scanner;
-
+/**
+ * @Author    Ali jafaripour
+ * @Data     1402/01/13
+ */
 public class Admin
 {
 

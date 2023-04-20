@@ -1,5 +1,10 @@
 import java.util.Random;
 
+/**
+ * @Author    Ali jafaripour
+ * @Data     1402/01/25
+ */
+
 public class Ticket
 {
 

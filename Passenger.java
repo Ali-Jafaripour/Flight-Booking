@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * @Author    Ali jafaripour
+ * @Data     1402/01/09
+ */
+
 public class Passenger
 {
     private String username;
@@ -12,10 +17,10 @@ public class Passenger
 
     Booking sign_in  = new Booking();
 
-    int index_user = sign_in.index_pass;
+    int index_user = Booking.index_pass;
 
 
-//-------------   Getter  ----------------
+//---------------   Getter  -----------------
 
     public String getusername()
     {
@@ -32,7 +37,7 @@ public class Passenger
         return wallet;
     }
 
-//-------------   Setter  ----------------
+//----------------   Setter  ----------------=
 
     public void setusername(String username)
     {
@@ -50,8 +55,15 @@ public class Passenger
     }
 
 
+
+
 //------------------------------------------------- passenger menu -------------------------------------------------
 
+    /**
+     *  This method for first passenger menu;
+     * @param flight_ary  array of flight from Flight class
+     * @param user  array of user from Passenger class
+     */
     public void passenger_menu_back(Flight[] flight_ary,Passenger[] user)
     {
         passenger_menu_frant(user);
@@ -68,7 +80,7 @@ public class Passenger
 
             // ------------ Search Flight ticket -------------
             case 2:
-                search_flight_id(flight_ary,user);
+                search_flight(flight_ary,user);
                 break;
 
             // ------------ Ticket Cancellation --------------
@@ -190,7 +202,7 @@ public class Passenger
 
 //------------------------------------------------- Change Password -------------------------------------------------
     /**
-     *  This method give password if its true ,can change it.
+     *  This method give password if it's true ,can change it.
      * @param flight_ary  array of flight from Flight class
      * @param user  array of user from Passenger class
      */
@@ -260,7 +272,15 @@ public class Passenger
 
 //------------------------------------------------- Search Flight ticket -------------------------------------------------
 
-    private void search_flight_id(Flight[] flight_ary, Passenger[] user)
+    /**
+     *  This method give for filter flight information,
+     *  (price): you can filter in price range
+     *  (seat) : it shows all the flights that
+     *  have that amount of seat;
+     * @param flight_ary  array of flight from Flight class
+     * @param user  array of user from Passenger class
+     */
+    private void search_flight(Flight[] flight_ary, Passenger[] user)
     {
         search_front();
         System.out.print("\t\t\t\t\t\t==> ");
@@ -269,230 +289,237 @@ public class Passenger
         switch (num)
         {
             // --------------------- Flight ID ----------------
-            case 1:
+            case 1 ->
+            {
                 System.out.print("\t\t\t\t\t\tflight_id ==> ");
                 String flightid_filter = reader.next();
                 clear();
-
                 header_print();
-
-                for (int i = 0; i < flight_ary.length; i++)
-                {
-                    if(flight_ary[i].get_flight_id() != null  &&  flight_ary[i].get_flight_id().equals(flightid_filter.toUpperCase()))
-                    {
+                for (int i = 0; i < flight_ary.length; i++) {
+                    if (flight_ary[i].get_flight_id() != null && flight_ary[i].get_flight_id().equals(flightid_filter.toUpperCase())) {
                         System.out.print("\033[35m\t\t\t\t\t");
                         System.out.print("+---------------------------------------------------------------------------------------------+");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
 
 
                         System.out.print("\n\t\t\t\t\t");
-                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ",flight_ary[i].get_flight_id(),flight_ary[i].get_origin(),flight_ary[i].get_destantion(),flight_ary[i].get_data(),flight_ary[i].get_time(),flight_ary[i].get_price(),flight_ary[i].get_seat());
+                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ", flight_ary[i].get_flight_id(), flight_ary[i].get_origin(), flight_ary[i].get_destantion(), flight_ary[i].get_data(), flight_ary[i].get_time(), flight_ary[i].get_price(), flight_ary[i].get_seat());
                         System.out.println("|");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
                     }
                 }
-
                 end_print(flight_ary, user);
-
-
-
-
-
-                break;
-
+            }
 
 
             // ------------------- Origins --------------------
-            case 2:
-
+            case 2 ->
+            {
                 System.out.print("\t\t\t\t\t\torigin ==> ");
                 String origin = reader.next();
                 clear();
                 header_print();
-
-                for (int i = 0; i < flight_ary.length; i++)
-                {
-                    if(flight_ary[i].get_origin() != null  &&  flight_ary[i].get_origin().equals(origin))
-                    {
+                for (int i = 0; i < flight_ary.length; i++) {
+                    if (flight_ary[i].get_origin() != null && flight_ary[i].get_origin().equals(origin)) {
                         System.out.print("\033[35m\t\t\t\t\t");
                         System.out.print("+---------------------------------------------------------------------------------------------+");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
 
 
                         System.out.print("\n\t\t\t\t\t");
-                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ",flight_ary[i].get_flight_id(),flight_ary[i].get_origin(),flight_ary[i].get_destantion(),flight_ary[i].get_data(),flight_ary[i].get_time(),flight_ary[i].get_price(),flight_ary[i].get_seat());
+                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ", flight_ary[i].get_flight_id(), flight_ary[i].get_origin(), flight_ary[i].get_destantion(), flight_ary[i].get_data(), flight_ary[i].get_time(), flight_ary[i].get_price(), flight_ary[i].get_seat());
                         System.out.println("|");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
                     }
                 }
-
                 end_print(flight_ary, user);
-
-                break;
+            }
 
             // ------------------- Destention ----------------
-            case 3:
+            case 3 ->
+            {
                 System.out.print("\t\t\t\t\t\tdestantion ==> ");
                 String destantion = reader.next();
                 clear();
-
                 header_print();
-
-                for (int i = 0; i < flight_ary.length; i++)
-                {
-                    if(flight_ary[i].get_destantion() != null  &&  flight_ary[i].get_flight_id().equals(destantion))
-                    {
+                for (int i = 0; i < flight_ary.length; i++) {
+                    if (flight_ary[i].get_destantion() != null && flight_ary[i].get_flight_id().equals(destantion)) {
                         System.out.print("\033[35m\t\t\t\t\t");
                         System.out.print("+---------------------------------------------------------------------------------------------+");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
 
 
                         System.out.print("\n\t\t\t\t\t");
-                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ",flight_ary[i].get_flight_id(),flight_ary[i].get_origin(),flight_ary[i].get_destantion(),flight_ary[i].get_data(),flight_ary[i].get_time(),flight_ary[i].get_price(),flight_ary[i].get_seat());
+                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ", flight_ary[i].get_flight_id(), flight_ary[i].get_origin(), flight_ary[i].get_destantion(), flight_ary[i].get_data(), flight_ary[i].get_time(), flight_ary[i].get_price(), flight_ary[i].get_seat());
                         System.out.println("|");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
                     }
                 }
-
                 end_print(flight_ary, user);
-
-
-
-
-                break;
+            }
 
             // --------------- Data ---------------
-            case 4:
+            case 4 ->
+            {
                 System.out.print("\t\t\t\t\t\tdata ==> ");
                 String data = reader.next();
                 clear();
-
                 header_print();
-
-                for (int i = 0; i < flight_ary.length; i++)
-                {
-                    if(flight_ary[i].get_data() != null  &&  flight_ary[i].get_data().equals(data))
-                    {
+                for (int i = 0; i < flight_ary.length; i++) {
+                    if (flight_ary[i].get_data() != null && flight_ary[i].get_data().equals(data)) {
                         System.out.print("\033[35m\t\t\t\t\t");
                         System.out.print("+---------------------------------------------------------------------------------------------+");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
 
 
                         System.out.print("\n\t\t\t\t\t");
-                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ",flight_ary[i].get_flight_id(),flight_ary[i].get_origin(),flight_ary[i].get_destantion(),flight_ary[i].get_data(),flight_ary[i].get_time(),flight_ary[i].get_price(),flight_ary[i].get_seat());
+                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ", flight_ary[i].get_flight_id(), flight_ary[i].get_origin(), flight_ary[i].get_destantion(), flight_ary[i].get_data(), flight_ary[i].get_time(), flight_ary[i].get_price(), flight_ary[i].get_seat());
                         System.out.println("|");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
                     }
                 }
-
                 end_print(flight_ary, user);
-
-
-                break;
+            }
 
 
             // ------------------- time -----------------
-            case 5:
+            case 5 ->
+            {
                 System.out.print("\t\t\t\t\t\ttime ==> ");
                 String time = reader.next();
                 clear();
-
                 header_print();
-                for (int i = 0; i < flight_ary.length; i++)
-                {
-                    if(flight_ary[i].get_time() != null  &&  flight_ary[i].get_time().equals(time))
-                    {
+                for (int i = 0; i < flight_ary.length; i++) {
+                    if (flight_ary[i].get_time() != null && flight_ary[i].get_time().equals(time)) {
                         System.out.print("\033[35m\t\t\t\t\t");
                         System.out.print("+---------------------------------------------------------------------------------------------+");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
 
 
                         System.out.print("\n\t\t\t\t\t");
-                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ",flight_ary[i].get_flight_id(),flight_ary[i].get_origin(),flight_ary[i].get_destantion(),flight_ary[i].get_data(),flight_ary[i].get_time(),flight_ary[i].get_price(),flight_ary[i].get_seat());
+                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ", flight_ary[i].get_flight_id(), flight_ary[i].get_origin(), flight_ary[i].get_destantion(), flight_ary[i].get_data(), flight_ary[i].get_time(), flight_ary[i].get_price(), flight_ary[i].get_seat());
                         System.out.println("|");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
                     }
                 }
                 end_print(flight_ary, user);
-
-
-
-                break;
-
+            }
 
             // ------------------- price -----------------
-            case 6:
+            case 6 ->
+            {
                 System.out.print("\t\t\t\t\t\tLowest price ==> ");
                 int low_price = reader.nextInt();
                 System.out.print("\t\t\t\t\t\tMost price ==> ");
                 int most_price = reader.nextInt();
-
                 clear();
                 header_print();
-                for (int i = 0; i < flight_ary.length; i++)
-                {
-                    if(flight_ary[i].get_price() >= low_price  &&  flight_ary[i].get_price() <= most_price)
-                    {
+                for (int i = 0; i < flight_ary.length; i++) {
+                    if (flight_ary[i].get_price() >= low_price && flight_ary[i].get_price() <= most_price) {
                         System.out.print("\033[35m\t\t\t\t\t");
                         System.out.print("+---------------------------------------------------------------------------------------------+");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
 
 
                         System.out.print("\n\t\t\t\t\t");
-                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ",flight_ary[i].get_flight_id(),flight_ary[i].get_origin(),flight_ary[i].get_destantion(),flight_ary[i].get_data(),flight_ary[i].get_time(),flight_ary[i].get_price(),flight_ary[i].get_seat());
+                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ", flight_ary[i].get_flight_id(), flight_ary[i].get_origin(), flight_ary[i].get_destantion(), flight_ary[i].get_data(), flight_ary[i].get_time(), flight_ary[i].get_price(), flight_ary[i].get_seat());
                         System.out.println("|");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
                     }
                 }
-
                 end_print(flight_ary, user);
-
-
-                break;
+            }
 
 
             // ------------------- seat -----------------
-            case 7:
+            case 7 ->
+            {
                 System.out.print("\t\t\t\t\t\tseat ==> ");
                 int seat = reader.nextInt();
                 clear();
-
                 header_print();
-                for (int i = 0; i < flight_ary.length; i++)
-                {
-                    if(flight_ary[i].get_seat() != 0  &&  flight_ary[i].get_seat() >= seat)
-                    {
+                for (int i = 0; i < flight_ary.length; i++) {
+                    if (flight_ary[i].get_seat() != 0 && flight_ary[i].get_seat() >= seat) {
                         System.out.print("\033[35m\t\t\t\t\t");
                         System.out.print("+---------------------------------------------------------------------------------------------+");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
 
 
                         System.out.print("\n\t\t\t\t\t");
-                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ",flight_ary[i].get_flight_id(),flight_ary[i].get_origin(),flight_ary[i].get_destantion(),flight_ary[i].get_data(),flight_ary[i].get_time(),flight_ary[i].get_price(),flight_ary[i].get_seat());
+                        System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ", flight_ary[i].get_flight_id(), flight_ary[i].get_origin(), flight_ary[i].get_destantion(), flight_ary[i].get_data(), flight_ary[i].get_time(), flight_ary[i].get_price(), flight_ary[i].get_seat());
                         System.out.println("|");
-                        try{Thread.sleep(80);}catch(InterruptedException e) {};
+                        try {
+                            Thread.sleep(80);
+                        } catch (InterruptedException e) {
+                        }
+                        ;
                     }
                 }
                 end_print(flight_ary, user);
-
-
-
-                break;
+            }
 
             // ------------------- exit -----------------
-            case 8:
+            case 8 -> {
                 clear();
-                passenger_menu_back(flight_ary,user);
-                break;
-
-            default:
-
+                passenger_menu_back(flight_ary, user);
+            }
+            default -> {
                 System.out.println("\t\t\t\t\t\t\t\t\t\t\033[91m ==> wrong choice <==\033[97m");
                 System.out.print("\t\t\t\t\t\t\t\t\t\t\t\033[33mPlese try again\033[97m");
-                search_flight_id(flight_ary, user);
-                break;
-
-
+                search_flight(flight_ary, user);
+            }
         }
 
     }
@@ -591,11 +618,11 @@ public class Passenger
         System.out.print("+---------------------------------------------------------------------------------------------+");
 
         System.out.println("\t\t\t\t\t Press something to go back");
-        while(true)
+        while (true)
         {
             String go_back = reader.next();
             clear();
-            passenger_menu_back(flight_ary, user);
+            search_flight(flight_ary, user);
 
             break;
         }
