@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -12,7 +14,9 @@ public class Booking {
     Passenger[] user = new Passenger[20];
     Flight[] flight_ary = new Flight[20];
 
-    static int index_pass;
+    static int index_user;
+
+
 
 
 //-------- welcome massage --------
@@ -23,6 +27,7 @@ public class Booking {
         new_flights();
         diffalt_flight();
         welcome_massage();
+
         menu_back(flight_ary,user);
     }
 
@@ -51,6 +56,8 @@ public class Booking {
     public void menu_back(Flight[] flight_ary,Passenger[] user)
     {
        // print_usernames(user);
+
+
 
         menu_front();
 
@@ -232,7 +239,7 @@ public class Booking {
         int[] check_pass = new int[2];
         check_pass = check_password(user,password);
         int flag_pass = check_pass[0];
-        index_pass = check_pass[1];
+        index_user = check_pass[1];
 
         if(flag_pass == 0 && !password.toLowerCase().equals("admin"))
         {
@@ -257,7 +264,7 @@ public class Booking {
 
         if(flag_name == 1  && flag_pass == 1)
         {
-            user[index_pass].passenger_menu_back(flight_ary, user);
+            user[index_user].passenger_menu_back(flight_ary, user);
         }
 
     }

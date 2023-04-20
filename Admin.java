@@ -442,6 +442,18 @@ public class Admin
             admin_back(flight_ary,user);
         }
 
+
+
+        if(Passenger.flight_booked.contains(flight_remove))
+        {
+            System.out.print("\n\n\n\t\t\t\t\t\033[91m  <<< This Flight Was Bought >>> ");
+            try {Thread.sleep(2000);} catch (InterruptedException e) {};
+            clear();
+            remove(flight_ary,user);
+        }
+
+
+
         int[] check = check_flight_id(flight_ary,flight_remove.toUpperCase());
 
         int flag = check[0];

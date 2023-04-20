@@ -16,14 +16,14 @@ public class Passenger
     private int  wallet = 0;
 
     Ticket[] ticket = new Ticket[30];
-
-    static  int count;
+    static  int count; // ths counter for fill array
+    static List<String> flight_booked = new ArrayList<>(); // This List For Flights Are Booked
 
     Scanner reader = new Scanner(System.in);
 
     Booking sign_in  = new Booking();
 
-    int index_user = Booking.index_pass;
+    int index_user = Booking.index_user;
 
 
 //---------------   Getter  -----------------
@@ -726,7 +726,7 @@ public class Passenger
             flight_ary[index].set_seat(seat-1);
         }
 
-        //Ticket ticket = new Ticket();
+        flight_booked.add(flight_ary[index].get_flight_id());
         user[index_user].ticket[count] = new Ticket();
         user[index_user].ticket[count].setFlight_index(index);
 
