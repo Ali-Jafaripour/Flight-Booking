@@ -375,57 +375,99 @@ public class Booking {
     private void welcome_massage()
     {
         clear();
-        System.out.println("\n\n\n\n\n\n\n\n\n\n");
 
-        System.out.println("\033[36m\t\t\t     ___                ____________ __                             ");
+        System.out.println("\n\n\n\n");
+
+
+        System.out.println("\t\t\t\033[36m                      _  _                                                                                                             _ .");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-        System.out.println("\t\t\t     \\  \\     ____     /  /  _______|  |     ______  ___   ___   _____ _______");
+        System.out.println("\t\t\t                     ( `   )_                                                                                                         (  _ )_");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-        System.out.println("\t\t\t      \\  \\   /    \\   /  /|  ____   |  |    /  ____/  _  \\|    \\/    |   _____|");
+        System.out.println("\t\t\t                    (    )    `)                                                                                                     (_  _(_ ,)");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-        System.out.println("\t\t\t       \\  \\ /  /\\  \\ /  / |   __|   |  |   |  |   |  | |  |  |\\  /|  |    __|");
+        System.out.println("\t\t\t                  (_   (_ .  _) _)                                       \033[97m        | \033[36m                            _");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-        System.out.println("\t\t\t        \\  V  /  \\  V  /  |  |______|  |___|  |___|  |_|  |  | \\/ |  |   |____");
+        System.out.println("\t\t\t                                                                   \033[97m      --======|======--  \033[36m                  (  )");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-        System.out.println("\t\t\t         \\___/    \\___/   |_________|_______\\______\\_____/|__|    |__|________|");
-
-
-        System.out.println("\n\n\n\n\n\033[93m");
-
-        System.out.println("\t\t\t ______             _    _              ______           _     _____ _      _        _       ");
+        System.out.println("\t\t\t                                                                    \033[97m             |         \033[36m                ( `  ) . )");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-        System.out.println("\t\t\t | ___ \\           | |  (_)             | ___ \\         | |   |_   _(_)    | |      | |      ");
+        System.out.println("\t\t\t                                                                      \033[97m           |         \033[36m               (_, _(  ,_)_)");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-        System.out.println("\t\t\t | |_/ / ___   ___ | | ___ _ __   __ _  | |_/ / ___  ___| |_    | |  _  ___| | _____| |_ ___ ");
+        System.out.println("\t\t\t \033[97m                                                                            .-\"\"\"\"\"-.");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-        System.out.println("\t\t\t | ___ \\/ _ \\ / _ \\| |/ / | '_ \\ / _` | | ___ \\/ _ \\/ __| __|   | | | |/ __| |/ / _ \\ __/ __|");
+        System.out.println("\t\t\t                                                                           .'\033[34m_________\033[97m'.");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-        System.out.println("\t\t\t | |_/ / (_) | (_) |   <| | | | | (_| | | |_/ /  __/\\__ \\ |_    | | | | (__|   <  __/ |_\\__ \\");
+        System.out.println("\t\t\t                                                                          /\033[34m_/_|__|__|_\\_\033[97m\\");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-        System.out.println("\t\t\t \\____/ \\___/ \\___/|_|\\_\\_|_| |_|\\__, | \\____/ \\___||___/\\__|   \\_/ |_|\\___|_|\\_\\___|\\__|___/");
+        System.out.println("\t\t\t                                                                         ;'-._       _.-';");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-        System.out.println("\t\t\t                                  __/ |                                                      ");
+        System.out.println("\t\t\t               ,---------------------------------------------------------|    `-. .-'    |--------------------------------------------------------,");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
-
-        System.out.println("\t\t\t                                 |___/                                                       ");
+        System.out.println("\t\t\t               ```\"\"-..-------`\"-// \\\\-\"`---------------..__     ___     ;       '       ;     ___    __..---------------`\"-// \\\\-\"`-------..-\"\"```");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t                                 \\\\_//                       `\"-// \\\\..___\\             /___..// \\\\-\"`                      \\\\_//");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t                                  `\"`                           \\\\_//      '._       _.'      \\\\_//                          `\"`");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t                                                                 \\|/          ``---``          \\|/");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+        System.out.println("\t\t\t                                                                OO|OO           O|O           OO|OO");
         try{Thread.sleep(80);}catch(InterruptedException e) {};
 
 
+        System.out.println("\n\n\n");
+
+
+        System.out.println("\033[36m\t\t\t\t\t\t\t\t     ___                ____________ __                             ");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t\t\t     \\  \\     ____     /  /  _______|  |     ______  ___   ___   _____ _______");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t\t\t      \\  \\   /    \\   /  /|  ____   |  |    /  ____/  _  \\|    \\/    |   _____|");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t\t\t       \\  \\ /  /\\  \\ /  / |   __|   |  |   |  |   |  | |  |  |\\  /|  |    __|");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t\t\t        \\  V  /  \\  V  /  |  |______|  |___|  |___|  |_|  |  | \\/ |  |   |____");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t\t\t\t         \\___/    \\___/   |_________|_______\\______\\_____/|__|    |__|________|");
+
+
+        System.out.println("\n\n\033[93m");
+
+        System.out.println("\t\t\t\t\t ______             _    _              ______           _     _____ _      _        _       ");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t | ___ \\           | |  (_)             | ___ \\         | |   |_   _(_)    | |      | |      ");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t | |_/ / ___   ___ | | ___ _ __   __ _  | |_/ / ___  ___| |_    | |  _  ___| | _____| |_ ___ ");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t | ___ \\/ _ \\ / _ \\| |/ / | '_ \\ / _` | | ___ \\/ _ \\/ __| __|   | | | |/ __| |/ / _ \\ __/ __|");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t | |_/ / (_) | (_) |   <| | | | | (_| | | |_/ /  __/\\__ \\ |_    | | | | (__|   <  __/ |_\\__ \\");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t \\____/ \\___/ \\___/|_|\\_\\_|_| |_|\\__, | \\____/ \\___||___/\\__|   \\_/ |_|\\___|_|\\_\\___|\\__|___/");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t                                  __/ |                                                      ");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
+
+        System.out.println("\t\t\t\t\t                                 |___/                                                       ");
+        try{Thread.sleep(80);}catch(InterruptedException e) {};
 
 
 
-        try{Thread.sleep(1500);}catch(InterruptedException e) {};
+
+
+
+        try{Thread.sleep(3000);}catch(InterruptedException e) {};
 
         clear();
     }

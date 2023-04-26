@@ -301,25 +301,18 @@ public class Passenger
                 String flightid_filter = reader.next();
                 clear();
                 header_print();
-                for (int i = 0; i < flight_ary.length; i++) {
-                    if (flight_ary[i].get_flight_id() != null && flight_ary[i].get_flight_id().equals(flightid_filter.toUpperCase())) {
+                for (int i = 0; i < flight_ary.length; i++)
+                {
+                    if (flight_ary[i].get_flight_id() != null && flight_ary[i].get_flight_id().equals(flightid_filter.toUpperCase()))
+                    {
                         System.out.print("\033[35m\t\t\t\t\t");
                         System.out.print("+---------------------------------------------------------------------------------------------+");
-                        try {
-                            Thread.sleep(80);
-                        } catch (InterruptedException e) {
-                        }
-                        ;
-
+                        try {Thread.sleep(80);} catch (InterruptedException e) {};
 
                         System.out.print("\n\t\t\t\t\t");
                         System.out.printf("|\033[97m    %-10s\033[35m|\033[97m    %-10s\033[35m|\033[97m    %-11s\033[35m|\033[97m %-12s\033[35m|\033[97m  %-9s\033[35m|\033[97m  %-10s\033[35m|\033[97m  %-4s\033[35m  ", flight_ary[i].get_flight_id(), flight_ary[i].get_origin(), flight_ary[i].get_destantion(), flight_ary[i].get_data(), flight_ary[i].get_time(), flight_ary[i].get_price(), flight_ary[i].get_seat());
                         System.out.println("|");
-                        try {
-                            Thread.sleep(80);
-                        } catch (InterruptedException e) {
-                        }
-                        ;
+                        try {Thread.sleep(80);} catch (InterruptedException e) {};
                     }
                 }
                 end_print(flight_ary, user);
@@ -732,7 +725,18 @@ public class Passenger
 
         while (true)
         {
-            System.out.printf("\n\n\n\t\t\t\t\t\033[32m  <<< Your ticket id : ˙˚\033[33m%10d \033[32m˚˙ >>> \n", user[index_user].ticket[count].getTicketId());
+
+            System.out.print("\t\t\t\t[32m__________________________________________________________________\n");
+            System.out.printf("\t\t\t\t| Your ticket id : ˙˚[33m %-10d[32m˚˙           _ .      [97mG[32m|         |\n" , user[index_user].ticket[count].getTicketId());
+            System.out.print("\t\t\t\t|                                          (  _ )_    [97mO[32m| ======= |\n");
+            System.out.printf("\t\t\t\t|            [97mFlight price : %-10d[32m    (_  _(_ ,) [97m O[32m| ======= |\n"  ,  flight_ary[index].get_price());
+            System.out.print("\t\t\t\t|  __|__                                              [97mD[32m| ======= |\n");
+            System.out.printf("\t\t\t\t|  \\___/      [97mFlight ID :  %5s[32m                      [97mL[32m| ======= |\n"  ,  flight_ary[index].get_flight_id());
+            System.out.print("\t\t\t\t|   | |                                               [97mU[32m| ======= |\n");
+            System.out.printf("\t\t\t\t|   | |          __|__        [97m%5s[32m ===> [97m%5s[32m       [97mC[32m| ======= |\n" , flight_ary[index].get_origin() , flight_ary[index].get_destantion() );
+            System.out.printf("\t\t\t\t|   | |    *---o--(_)--o---*     [97m%8S [32m        [97m  K[32m|[33m %5s[32m   |\n",flight_ary[index].get_data(),flight_ary[index].get_time());
+            System.out.printf("\t\t\t\t|___|_|________________________________________________|_________|\n");
+
             count++;
             String go_back = reader.next();
             clear();
