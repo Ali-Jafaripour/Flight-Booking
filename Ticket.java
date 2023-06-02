@@ -7,13 +7,11 @@ import java.util.Random;
 
 public class Ticket
 {
-    private int ticketId;
-    private int flight_index;
+    public int ticketId;
+    private  String user_id;
+    private  String flight_id;
 
-    public void setFlight_index(int flight_index)
-    {
-        this.flight_index = flight_index;
-    }
+
 
     //--------------- constructor ------------------
     public Ticket()
@@ -24,7 +22,6 @@ public class Ticket
         while (!isUnique)
         {
 
-            // char c = (char)(rand.nextInt(26)+'A');
 
             StringBuilder sb = new StringBuilder();
 
@@ -41,18 +38,10 @@ public class Ticket
                 this.ticketId = newTicketId;
                 isUnique = true;
             }
+
         }
     }
-    //--------------- Get ------------------
-    public int getTicketId()
-    {
-        return this.ticketId;
-    }
 
-    public int getFlight_index()
-    {
-        return flight_index;
-    }
 }
 
 
